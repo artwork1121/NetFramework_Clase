@@ -1,0 +1,62 @@
+﻿@model NET_Framework.ViewModels.ProductsViewModel
+@using NET_Framework.Utils
+@{
+	ViewBag.Title = "Productos";
+}
+<h2>Productos de nuestra empresa: @Model.Company.BussinesName</h2>
+<h3>Nuestros productos</h3>
+<h5>Cantidad: @Model.Product.Count</h5>
+
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<td>@Html.DisplayNameFor(d=>d.Product.First().Name)</td>
+				<td>@Html.DisplayNameFor(d => d.Product.First().Description)</td>
+				<td>Precio</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model.Product)
+			{
+			<tr>
+				<td>
+					@item.Name
+				</td>
+				<td>
+					@item.Description
+				</td>
+				<td>
+					@item.TotalPrice
+				</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+</div>
+<div class="row">
+    <div class="col-md-2">
+		@Html.ButtonColorChange("red")
+	</div>
+    <div class="col-md-10">
+		@Html.Partial("Error")
+	</div>
+</div>
+<div class="row">
+		<label>Comentarios: </label>
+		<input id="comment" type="type" name="comment" value="" />
+		<button id="btn"class="btn btn-info" type="submit">Enviar</button>
+	
+	<span></span>
+</div>
+@*<script>
+	$("#btn").click(function (event) {
+		var buscar = $('#comment').val();
+		console.log(buscar);
+
+		$.post('/Home/JsonObtener?comment=' + buscar, function (result) {
+			console.log(result);
+		})
+	});
+</script>*@
+
