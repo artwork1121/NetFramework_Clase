@@ -40,7 +40,5 @@ namespace AccDatos
 		public DbSet<Sale> Sales { get; set; }
 		public DbSet<SaleLine> SaleLines { get; set; }
 		public DbSet<User> Users { get; set; }
-		public DbSet<Provincia> Provincias { get; set; }
-		public DbSet<Localidad> Localidades { get; set; }
 	}    
 }

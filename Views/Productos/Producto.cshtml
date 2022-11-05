@@ -1,0 +1,45 @@
+﻿@model NET_Framework.ViewModels.ProductoViewModel
+@{
+	ViewBag.Title = "Producto";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Producto</h2>
+
+<div class="row">
+	<form action="/Productos/Producto" method="post" enctype="multipart/form-data">
+		<div class="form-group" hidden>
+			<input name="id" value="@Model.Id" type="text" class="form-control" aria-describedby="emailHelp">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Nombre</label>
+			<input name="name" value="@Model.Name" type="text" class="form-control" aria-describedby="emailHelp">
+			@Html.ValidationMessageFor(x => x.Name)
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Desc</label>
+			<input name="description" value="@Model.Description" type="text" class="form-control" aria-describedby="emailHelp">
+			@Html.ValidationMessageFor(x => x.Description)
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">precio</label>
+			<input name="price" value="@Model.Price" type="text" class="form-control" aria-describedby="emailHelp">
+			@Html.ValidationMessageFor(x => x.Price)
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">impuestos</label>
+			<input name="tax" value="@Model.Tax" type="text" class="form-control" aria-describedby="emailHelp">
+			@Html.ValidationMessageFor(x => x.Tax)
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Total</label>
+			<input name="totalprice" readonly value="@Model.TotalPrice" type="text" class="form-control" aria-describedby="emailHelp">
+		</div>
+		<div class="custom-file">
+			<input name="image" type="file" class="custom-file-input" id="customFile">
+			<label  class="custom-file-label" for="customFile">Imagen</label>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+    <img src="@Html.Raw(@Model.Image)"  alt="Alternate Text" />
+</div>

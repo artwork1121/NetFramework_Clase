@@ -51,9 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202210261939430_primera.cs" />
-    <Compile Include="Migrations\202210261939430_primera.designer.cs">
-      <DependentUpon>202210261939430_primera.cs</DependentUpon>
+    <Compile Include="DTO\ProductResponse.cs" />
+    <Compile Include="Migrations\202211032242240_primera.cs" />
+    <Compile Include="Migrations\202211032242240_primera.designer.cs">
+      <DependentUpon>202211032242240_primera.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
@@ -79,11 +80,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210261939430_primera.resx">
-      <DependentUpon>202210261939430_primera.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211032242240_primera.resx">
+      <DependentUpon>202211032242240_primera.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

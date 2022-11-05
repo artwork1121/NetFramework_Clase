@@ -16,16 +16,10 @@
                         Number = c.Int(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         ClientId = c.Int(nullable: false),
-                        ProvinciaId = c.Int(nullable: false),
-                        LocalidadId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Client", t => t.ClientId, cascadeDelete: true)
-                .ForeignKey("dbo.Localidad", t => t.LocalidadId, cascadeDelete: true)
-                .ForeignKey("dbo.Provincia", t => t.ProvinciaId, cascadeDelete: true)
-                .Index(t => t.ClientId)
-                .Index(t => t.ProvinciaId)
-                .Index(t => t.LocalidadId);
+                .ForeignKey("dbo.Client", t => t.ClientId, cascadeDelete: false)
+                .Index(t => t.ClientId);
             
             CreateTable(
                 "dbo.Client",
@@ -34,29 +28,6 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         DNI = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Localidad",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        CP = c.Int(nullable: false),
-                        NewCP = c.String(),
-                        ProvinciaId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Provincia", t => t.ProvinciaId, cascadeDelete: false)
-                .Index(t => t.ProvinciaId);
-            
-            CreateTable(
-                "dbo.Provincia",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -83,7 +54,7 @@
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Tax = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CompanyId = c.Int(nullable: false),
-                        Image = c.String(),
+                        Image = c.Binary(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Company", t => t.CompanyId, cascadeDelete: false)
@@ -160,9 +131,6 @@
             DropForeignKey("dbo.SaleLine", "ProductId", "dbo.Product");
             DropForeignKey("dbo.Sale", "CompanyId", "dbo.Company");
             DropForeignKey("dbo.Product", "CompanyId", "dbo.Company");
-            DropForeignKey("dbo.Adress", "ProvinciaId", "dbo.Provincia");
-            DropForeignKey("dbo.Adress", "LocalidadId", "dbo.Localidad");
-            DropForeignKey("dbo.Localidad", "ProvinciaId", "dbo.Provincia");
             DropForeignKey("dbo.Adress", "ClientId", "dbo.Client");
             DropIndex("dbo.Role", new[] { "User_Id" });
             DropIndex("dbo.User", new[] { "Company_Id" });
@@ -171,9 +139,6 @@
             DropIndex("dbo.SaleLine", new[] { "SaleId" });
             DropIndex("dbo.Sale", new[] { "CompanyId" });
             DropIndex("dbo.Product", new[] { "CompanyId" });
-            DropIndex("dbo.Localidad", new[] { "ProvinciaId" });
-            DropIndex("dbo.Adress", new[] { "LocalidadId" });
-            DropIndex("dbo.Adress", new[] { "ProvinciaId" });
             DropIndex("dbo.Adress", new[] { "ClientId" });
             DropTable("dbo.Role");
             DropTable("dbo.User");
@@ -181,8 +146,6 @@
             DropTable("dbo.Sale");
             DropTable("dbo.Product");
             DropTable("dbo.Company");
-            DropTable("dbo.Provincia");
-            DropTable("dbo.Localidad");
             DropTable("dbo.Client");
             DropTable("dbo.Adress");
         }

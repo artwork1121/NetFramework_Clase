@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NET_Framework.ViewModels.ProductoViewModel>
+
+@{
+	ViewBag.Title = "Buscar";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Buscar</h2>
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<td>Nombre</td>
+				<td>Descripción</td>
+				<td>Precio</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@item.Name
+					</td>
+					<td>
+						@item.Description
+					</td>
+					<td>
+						@item.TotalPrice
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+

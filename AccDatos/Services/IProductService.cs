@@ -1,4 +1,5 @@
-﻿using NET.Dominio;
+﻿using AccDatos.DTO;
+using NET.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace AccDatos.Services
 	public interface IProductService
 	{
 		void AgregarProducto(Product product);
-        void EditarProducto(Product product);
-        void EliminarProducto(Product product);
-        IEnumerable<Product> ObtenerTodo(Expression<Func<Product, bool>> expression = null);
-        Product GetProductById(int id);
-    }
+		void EditarProducto(Product product);
+		void EliminarProducto(Product product);
+		IEnumerable<Product> ObtenerTodo(Expression<Func<Product, bool>> expression = null);
+		Product GetProductById(int id);
+		ProductResponse GetProduct(int id);
+	}
 }

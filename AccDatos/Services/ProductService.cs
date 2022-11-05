@@ -1,4 +1,5 @@
-﻿using AccDatos.Repository;
+﻿using AccDatos.DTO;
+using AccDatos.Repository;
 using NET.Dominio;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace AccDatos.Services
 		}
 		public void AgregarProducto(Product product)
 		{
-			//logica que creamos!
 			_repository.Agregar(product);
 		}
 
@@ -33,6 +33,29 @@ namespace AccDatos.Services
 			_repository.Eliminar(product);
 		}
 
+		public ProductResponse GetProduct(int id)
+		{
+			try
+			{
+				throw new Exception("No pasas de aca");
+				return new ProductResponse()
+				{
+					status = true,
+					Message = "todo OK",
+					ProductResponses = new List<Product>()
+				};
+			}
+			catch (Exception e)
+			{
+				return new ProductResponse()
+				{
+					status = false,
+					Message = e.Message,
+					ProductResponses = new List<Product>()
+				};
+			}
+		}
+
 		public Product GetProductById(int id)
 		{
 			try
@@ -41,10 +64,8 @@ namespace AccDatos.Services
 			}
 			catch (Exception)
 			{
-
-				throw;
+				return _repository.ObtenerTodo(p => p.Id == id).FirstOrDefault();
 			}
-            return _repository.ObtenerTodo(p => p.Id == id).FirstOrDefault();
 		}
 
 		public IEnumerable<Product> ObtenerTodo(Expression<Func<Product, bool>> expression = null)

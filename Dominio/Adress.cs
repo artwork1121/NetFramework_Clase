@@ -12,9 +12,5 @@ namespace NET.Dominio
 
 		public int ClientId { get; set; }
 		public virtual Client Client { get; set; }
-		public int ProvinciaId { get; set; }
-        public virtual Provincia Provincia { get; set; }
-        public int LocalidadId { get; set; }
-        public virtual Localidad Localidad { get; set; }
     }
 }

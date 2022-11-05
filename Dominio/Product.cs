@@ -19,6 +19,6 @@ namespace NET.Dominio
 		public int CompanyId { get; set; }
 		public virtual Company Company { get; set; }
 
-		public string Image { get; set; }
+		public byte[] Image { get; set; }
 	}
 }

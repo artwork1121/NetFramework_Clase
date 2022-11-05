@@ -21,8 +21,9 @@ namespace NET_Framework.Controllers
         public HomeController()
 		{
 			_productService = new ProductService();
+			_saleService = new SaleService();
 		}
-		public ActionResult Index()
+		public ActionResult Index(bool optional = false)
 		{
 			return View();
 		}
@@ -44,23 +45,44 @@ namespace NET_Framework.Controllers
 
 			var ventas = _saleService.ObtenerTodo();
 
-			ventas.Where(x => x.SaleLine.Any(sl => sl.Total > 100));
+			var producto2 = _productService.GetProduct(123);
 
-			var respuesta2 = productos.Select(x => new DTO
+			//ventas.Where(x => x.SaleLine.Any(sl => sl.Total > 100));
+
+			//var respuesta2 = productos.Select(x => new DTO
+			//{
+			//	Nombre = x.Name,
+			//	Descripcion = x.Description
+			//});
+
+			//productos.Sum(x => x.TotalPrice);
+			//productos.Take(10);
+			//productos.ToArray();
+			//productos.Max(x => x.TotalPrice);
+			//productos.Min(x => x.TotalPrice);
+
+			try
 			{
-				Nombre = x.Name,
-				Descripcion = x.Description
-			});
+				if (producto2.status)
+				{
+					throw new ArithmeticException("");
+				}
+			}
+			catch (Exception)
+			{
 
-			productos.Sum(x => x.TotalPrice);
-			productos.Take(10);
-			productos.ToArray();
-			productos.Max(x => x.TotalPrice);
-			productos.Min(x => x.TotalPrice);
+				throw;
+			}
 
 			var model = new ProductsViewModel();
 			
 			return View(model);
+		}
+
+		[HttpPost]
+		public ActionResult AlgoPost()
+		{
+			return RedirectToAction("Index", new { optional = true });
 		}
 
 		//public ActionResult JsonObtener(string comment)

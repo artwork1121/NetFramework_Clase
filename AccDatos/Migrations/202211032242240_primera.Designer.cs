@@ -13,7 +13,7 @@ namespace AccDatos.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202210261939430_primera"; }
+            get { return "202211032242240_primera"; }
         }
         
         string IMigrationMetadata.Source
