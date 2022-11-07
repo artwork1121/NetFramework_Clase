@@ -1,0 +1,15 @@
+﻿@model NET_Framework.ViewModels.ProductoViewModel
+
+<div class="card" style="width: 18rem;">
+	<img src="@Model.Image" class="card-img-top" alt="...">
+	<div class="card-body">
+		<h5 class="card-title">@Model.Name</h5>
+		<p class="card-text">@Model.Description</p>
+		<p>
+			<strong>
+				$ @Model.TotalPrice
+			</strong>
+		</p>
+		<a href="#" class="btn btn-primary">Go somewhere</a>
+	</div>
+</div>

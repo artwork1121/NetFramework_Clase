@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NET_Framework.ViewModels.ProductoViewModel>
+@using NET_Framework.Utils
+
+@{
+	ViewBag.Title = "Productos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+<!-- Por vista parcial -->
+<h3>Partial View</h3>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		@Html.Partial("_Producto", item)
+	}
+</div>
+<hr />
+<!-- Por Custom HTML Helper -->
+<h3>Html Extencion method</h3>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		@Html.CardProduct(item)
+	}
+</div>
+<hr />
+<h3>Foreach</h3>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="card" style="width: 18rem;">
+			<img src="@item.Image" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">@item.Name</h5>
+				<p class="card-text">@item.Description</p>
+				<p>
+					<strong>
+						$ @item.TotalPrice
+					</strong>
+				</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+		</div>
+	}
+</div>

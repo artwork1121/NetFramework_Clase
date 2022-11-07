@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/Home/Index">
 				<img src="~/Content/Images/dotnet-logo.svg" width="30" height="30" alt="">
 				NET Framework
 			</a>
@@ -24,10 +24,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        @Html.ActionLink("Productos", "Products", "Home", new { @class = "nav-link" })
+                        @Html.ActionLink("Productos", "Index", "Productos", "Productos", new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Acerca de Nosotros", "About", "Home", new { @class = "nav-link" })
+                        @Html.ActionLink("Acerca de Nosotros", "About", "Home", "Home", new { @class = "nav-link" })
                     </li>
                     <li class="nav-item active">
                         @Html.ActionLink("Nuevo Producto", "Producto", "Productos", "Producto", new { @class = "nav-link" })

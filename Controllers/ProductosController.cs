@@ -16,7 +16,17 @@ namespace NET_Framework.Controllers
 		// GET: Productos
 		public ActionResult Index()
 		{
-			return View();
+			var producto = _productoService.ObtenerTodo();
+
+			var response = producto.Select(p => new ProductoViewModel()
+			{
+				Name = p.Name,
+				Description = p.Description,
+				Price = p.Price,
+				Tax = p.Tax,
+				Image = $"data:image/png;base64,{Convert.ToBase64String(p.Image)}"
+			}).ToList();
+			return View(response);
 		}
 
 		public ActionResult Buscar(string buscar)
@@ -36,16 +46,7 @@ namespace NET_Framework.Controllers
 		[HttpGet]
 		public ActionResult Producto()
 		{
-			var producto = _productoService.ObtenerTodo(x=>x.Id == 1).FirstOrDefault();
-
-			var response = new ProductoViewModel()
-			{
-				Name = producto.Name,
-				Description = producto.Description,
-				Price = producto.Price,
-				Tax = producto.Tax,
-				Image = $"data:image/png;base64,{Convert.ToBase64String(producto.Image)}"
-			};
+			var response = new ProductoViewModel();
 			return View(response);
 		}
 		[HttpPost]
@@ -66,27 +67,7 @@ namespace NET_Framework.Controllers
 				Image = arrayBit
             });
 
-			//var producto = _productoService.GetProduct(1).ProductResponses.First();
-
-			////
-			//string imagenTobase64 = String.Empty;
-
-			//if (producto.Image != null)
-			//{
-			//	imagenTobase64 = Convert.ToBase64String(producto.Image);
-			//}
-
-
-			var imagenTobase64 = Convert.ToBase64String(arrayBit);
-
-			return View(new ProductoViewModel()
-			{
-				Name = collection["name"],
-				Description = collection["description"],
-				Price = decimal.Parse(collection["price"]),
-				Tax = decimal.Parse(collection["tax"]),
-				Image = $"data:image/png;base64,{imagenTobase64}"
-			});
+			return RedirectToAction("Index");
 		}
 
 		//[HttpPost]

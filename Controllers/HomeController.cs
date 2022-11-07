@@ -41,40 +41,13 @@ namespace NET_Framework.Controllers
 
 			var productos = _productService.ObtenerTodo();
 
-			var respuesta = productos.Any(p => p.Name.Equals("remera"));
-
-			var ventas = _saleService.ObtenerTodo();
-
-			var producto2 = _productService.GetProduct(123);
-
-			//ventas.Where(x => x.SaleLine.Any(sl => sl.Total > 100));
-
-			//var respuesta2 = productos.Select(x => new DTO
-			//{
-			//	Nombre = x.Name,
-			//	Descripcion = x.Description
-			//});
-
-			//productos.Sum(x => x.TotalPrice);
-			//productos.Take(10);
-			//productos.ToArray();
-			//productos.Max(x => x.TotalPrice);
-			//productos.Min(x => x.TotalPrice);
-
-			try
+			var model = new ProductsViewModel()
 			{
-				if (producto2.status)
-				{
-					throw new ArithmeticException("");
-				}
-			}
-			catch (Exception)
-			{
-
-				throw;
-			}
-
-			var model = new ProductsViewModel();
+				Company = productos.FirstOrDefault().Company,
+				Status = true,
+				Message = "Ok",
+				Product = productos.ToList(),
+			};
 			
 			return View(model);
 		}

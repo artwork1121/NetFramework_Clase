@@ -136,7 +136,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\HTMLHelpersExtencions.cs" />
+    <Compile Include="Utils\HtmlUtils.cs" />
+    <Compile Include="Utils\MyHelper.cs" />
     <Compile Include="ViewModels\ProductoViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />
   </ItemGroup>
@@ -289,6 +290,8 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
+    <Content Include="Views\Shared\_Producto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
